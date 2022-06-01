@@ -1,0 +1,9 @@
+{
+  "difficulty": 10,
+  "path": "test.wav",
+  "bpm": 120,
+  "beat": "4/4",
+  "notes": [
+    ["4", "normal", [2, 1], [40],"n"]
+  ]
+}
