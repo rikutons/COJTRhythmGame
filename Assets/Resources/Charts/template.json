@@ -1,0 +1,15 @@
+{
+  "difficulty": 10,
+  "path": "test.wav",
+  "bpm": 120,
+  "beat": "4/4",
+  "notes": [
+    {
+      "length": "4",
+      "kind": "normal",
+      "timing" : [2, 1],
+      "tone" : [40],
+      "option" : "n"
+    }
+  ]
+}
