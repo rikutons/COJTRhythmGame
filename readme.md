@@ -37,3 +37,7 @@ COJT音ゲーグループメンバー
 # License
  
 "COJTRhythmGame" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+
+# Resources
+
+楽譜の音符等の画像の取得元、教育芸術社、最終観覧日：2022/06/01、https://www.kyogei.co.jp/data_room/material/

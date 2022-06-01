@@ -1,4 +1,5 @@
-# imagesの中のjpgをpng
+# imagesの中のjpgを透過pngに変換して出力するコード
+# 透過処理は14行目。
 import os
 import cv2
 import numpy as np
