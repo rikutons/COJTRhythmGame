@@ -41,3 +41,5 @@ COJT音ゲーグループメンバー
 # Resources
 
 楽譜の音符等の画像の取得元、教育芸術社、最終観覧日：2022/06/01、https://www.kyogei.co.jp/data_room/material/
+
+空の楽譜、ATAKA音楽教室、http://atakamusicstudio.com/score/
