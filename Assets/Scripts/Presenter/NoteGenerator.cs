@@ -11,6 +11,8 @@ public class NoteGenerator : MonoBehaviour {
     private float C4Pos;
     [SerializeField]
     private float toneHeight;
+    [SerializeField]
+    private ScorePresenter scorePresenter;
     public void Generate(Chart.Note noteData, float noteSpawnX)
     {
         GameObject note = Instantiate(notePrefab);
@@ -18,6 +20,7 @@ public class NoteGenerator : MonoBehaviour {
         {
             note.transform.position = judgeLineTransform.position + Vector3.right * noteSpawnX + Vector3.up * (C4Pos + tone * toneHeight);
             NotePresenter notePresenter = note.GetComponent<NotePresenter>();
+            notePresenter.scorePresenter = scorePresenter;
             notePresenter.Init(noteData.length, noteSpawnX / settings.notesSpeed + Time.time);
         }
     }

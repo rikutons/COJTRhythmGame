@@ -12,6 +12,7 @@ public class NotePresenter : MonoBehaviour
     private MasterData.JudgeTiming judgeTiming;
     [SerializeField]
     private SpriteRenderer spriteRenderer;
+    public ScorePresenter scorePresenter;
 
     public void Init(string code, float timing)
     {
@@ -31,22 +32,22 @@ public class NotePresenter : MonoBehaviour
                 float distance = Mathf.Abs(timing - Time.time);
                 if(distance < judgeTiming.perfectSecond)
                 {
-                    Debug.Log("perfect");
+                    scorePresenter.AddScore("perfect");
                     Destroy(this.gameObject);
                 }
                 else if(distance < judgeTiming.greatSecond)
                 {
-                    Debug.Log("great");
+                    scorePresenter.AddScore("great");
                     Destroy(this.gameObject);
                 }
                 else if(distance < judgeTiming.goodSecond)
                 {
-                    Debug.Log("good");
+                    scorePresenter.AddScore("good");
                     Destroy(this.gameObject);
                 }
                 else if(distance < judgeTiming.missSecond)
                 {
-                    Debug.Log("miss");
+                    scorePresenter.AddScore("miss");
                     Destroy(this.gameObject);
                 }
             }
