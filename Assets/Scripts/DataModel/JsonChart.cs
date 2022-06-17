@@ -14,6 +14,7 @@ namespace COJTRhythmGame.JsonUtil
             public int[] timing;
             public int[] tone;
         }
+        public string title;
         public float difficulty;
         public string path;
         public int bpm;

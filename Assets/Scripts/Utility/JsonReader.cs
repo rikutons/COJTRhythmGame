@@ -14,6 +14,7 @@ public class JsonReader : MonoBehaviour
     static private Chart JsonChartToChart(JsonChart jsonChart)
     {
         Chart chart = new Chart();
+        
         chart.difficutly = jsonChart.difficulty;
         chart.path = jsonChart.path;
         chart.bpm = jsonChart.bpm;
