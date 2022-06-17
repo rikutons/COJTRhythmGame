@@ -14,6 +14,11 @@ public class ScorePresenter : MonoBehaviour
     private TextMeshProUGUI comboText;
     [SerializeField]
     private MasterData.JudgeScore judgeScore;
+    [SerializeField]
+    private AudioSource audioSource;
+
+    private float defaultVolume;
+
     void Start()
     {
         userScore.onScoreChanged.Subscribe(score =>
@@ -24,6 +29,7 @@ public class ScorePresenter : MonoBehaviour
         {
             comboText.text = "Combo: " + combo.ToString();
         });
+        defaultVolume = audioSource.volume;
     }
 
     public void AddScore(string judge)
@@ -33,17 +39,21 @@ public class ScorePresenter : MonoBehaviour
             case "perfect":
                 userScore.Score += judgeScore.perfectScore;
                 userScore.Combo++;
+                audioSource.volume = defaultVolume;
                 break;
             case "great":
                 userScore.Score += judgeScore.greatScore;
                 userScore.Combo++;
+                audioSource.volume = defaultVolume;
                 break;
             case "good":
                 userScore.Score += judgeScore.goodScore;
                 userScore.Combo++;
+                audioSource.volume = defaultVolume;
                 break;
             case "miss":
                 userScore.Combo = 0;
+                audioSource.volume = defaultVolume * 0.3f;
                 break;
         }
     }

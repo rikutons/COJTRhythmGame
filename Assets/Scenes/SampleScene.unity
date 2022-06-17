@@ -1037,6 +1037,7 @@ MonoBehaviour:
   scoreText: {fileID: 1732183004}
   comboText: {fileID: 2019226736}
   judgeScore: {fileID: 11400000, guid: df9f4921e0f083c4688ec2b8ab2284a1, type: 2}
+  audioSource: {fileID: 1070534627}
 --- !u!1 &2019226734
 GameObject:
   m_ObjectHideFlags: 0
