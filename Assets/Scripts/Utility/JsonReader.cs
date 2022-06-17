@@ -1,8 +1,6 @@
 using System;
 using UnityEngine;
 using COJTRhythmGame.JsonUtil;
-using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
 
 public class JsonReader : MonoBehaviour
 {
@@ -31,7 +29,6 @@ public class JsonReader : MonoBehaviour
             chart.notes[i].length = n.length;
             chart.notes[i].kind = n.kind;
             chart.notes[i].timing = (((double)n.timing[0] - 1) * upper / lower * 4 + (double)(n.timing[1] - 1)) / chart.bpm * 60;
-            Debug.Log(chart.notes[i].timing);
         }
         return chart;
     }

@@ -25,10 +25,8 @@ public class ChartPresenter : MonoBehaviour
     {
         chart = JsonReader.Read(jsonFileName);
         noteIndex = 0;
-        Debug.Log(chart.path);
         var clip = await Resources.LoadAsync<AudioClip>("Musics/" + chart.path);
         audioSource.clip = clip as AudioClip;
-        Debug.Log(noteSpawnX / settings.notesSpeed + constants.timeOffset);
         time = Time.time;
         audioSource.PlayDelayed(noteSpawnX / settings.notesSpeed + constants.timeOffset);
         this.UpdateAsObservable()
@@ -36,7 +34,6 @@ public class ChartPresenter : MonoBehaviour
             .Where(_ => chart.notes[noteIndex].timing <= (Time.time - time))
             .Subscribe(_ =>
             {
-                Debug.Log(Time.time - time);
                 noteGenerator.Generate(chart.notes[noteIndex], noteSpawnX);
                 noteIndex++;
             }

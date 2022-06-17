@@ -201,10 +201,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notePrefab: {fileID: 3466405451963578322, guid: 2cd1648940e44794eada451a14f37b09, type: 3}
+  noteSpritePrefab: {fileID: 403955364873108355, guid: 5def24cdd96cb314caa4a535d30250a2, type: 3}
   settings: {fileID: 11400000, guid: aa1e95fe4604e3c4e826d83d691bf309, type: 2}
   judgeLineTransform: {fileID: 1798446633}
-  C4Pos: 0
-  toneHeight: 0.2
+  C4Pos: -0.37
+  toneHeight: 0.19
+  rotateOffset: 1.5
   scorePresenter: {fileID: 1944240701}
 --- !u!1 &519420028
 GameObject:
