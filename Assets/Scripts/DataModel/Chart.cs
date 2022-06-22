@@ -11,6 +11,7 @@ public class Chart
         public int[] tone;
         public double timing;
     };
+    public string title;
     public float difficutly;
     public string path;
     public int bpm;
