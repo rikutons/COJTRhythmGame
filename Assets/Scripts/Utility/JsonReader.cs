@@ -18,6 +18,7 @@ public class JsonReader : MonoBehaviour
         chart.difficutly = jsonChart.difficulty;
         chart.path = jsonChart.path;
         chart.bpm = jsonChart.bpm;
+        chart.title = jsonChart.title;
         string[] values = jsonChart.beat.Split('/');
         int upper = int.Parse(values[0]);
         int lower = int.Parse(values[1]);

@@ -3,6 +3,7 @@ using UniRx;
 using UniRx.Triggers;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using TMPro;
 
 public class ChartPresenter : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class ChartPresenter : MonoBehaviour
     private Chart chart;
     private int noteIndex = 0;
     private double time = 0;
+    
+    [SerializeField]
+    private TextMeshProUGUI title;
+
     async void Start()
     {
         chart = JsonReader.Read(jsonFileName);
@@ -28,6 +33,9 @@ public class ChartPresenter : MonoBehaviour
         var clip = await Resources.LoadAsync<AudioClip>("Musics/" + chart.path);
         audioSource.clip = clip as AudioClip;
         time = Time.time;
+
+        title.text = chart.title.ToString();
+
         audioSource.PlayDelayed(noteSpawnX / settings.notesSpeed + constants.timeOffset);
         this.UpdateAsObservable()
             .Where(_ => noteIndex < chart.notes.Length)
