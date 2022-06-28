@@ -238,7 +238,7 @@ Transform:
   - {fileID: 1798446633}
   - {fileID: 1706954149}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &303231807
 GameObject:
@@ -270,7 +270,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1854542754}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &303231809
 MonoBehaviour:
@@ -291,7 +291,7 @@ MonoBehaviour:
   C4Pos: -0.37
   toneHeight: 0.19
   rotateOffset: 1.5
-  scorePresenter: {fileID: 1944240701}
+  judgePresenter: {fileID: 1425978012}
 --- !u!1 &467217032
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,8 +489,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1854542754}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1070534627
 AudioSource:
@@ -684,7 +684,7 @@ RectTransform:
   - {fileID: 2019226735}
   - {fileID: 1579073441}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -775,6 +775,53 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1425978010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1425978011}
+  - component: {fileID: 1425978012}
+  m_Layer: 0
+  m_Name: Judge Presenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1425978011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425978010}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1854542754}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1425978012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425978010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0d6337f4650124686c046b11818ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: aa1e95fe4604e3c4e826d83d691bf309, type: 2}
+  judgeTiming: {fileID: 11400000, guid: 51b9968f2d6e85b45a172ede78c1f2e8, type: 2}
+  scorePresenter: {fileID: 1944240701}
 --- !u!1 &1456993729
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,7 +1012,7 @@ GameObject:
   - component: {fileID: 1706954149}
   - component: {fileID: 1706954150}
   m_Layer: 0
-  m_Name: Blank
+  m_Name: Blank Chart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1266,7 +1313,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1854542754}
-  - component: {fileID: 1854542755}
   m_Layer: 0
   m_Name: Presenters
   m_TagString: Untagged
@@ -1286,31 +1332,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2051127374}
   - {fileID: 303231808}
-  - {fileID: 1070534626}
+  - {fileID: 1425978011}
   - {fileID: 1944240700}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1854542755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1854542753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb93911c2af5cc344a735473b3d38e40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jsonFileName: kirakiraboshi_chart
-  noteGenerator: {fileID: 303231809}
-  settings: {fileID: 11400000, guid: aa1e95fe4604e3c4e826d83d691bf309, type: 2}
-  constants: {fileID: 11400000, guid: 07e56e9be33a6f7498d242e3d83b7260, type: 2}
-  audioSource: {fileID: 1070534627}
-  noteSpawnX: 15
-  title: {fileID: 1579073442}
 --- !u!1 &1927754242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,7 +1417,7 @@ GameObject:
   - component: {fileID: 1944240700}
   - component: {fileID: 1944240701}
   m_Layer: 0
-  m_Name: ScorePresenter
+  m_Name: Score Presenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1412,7 +1440,7 @@ Transform:
   - {fileID: 1153946604}
   - {fileID: 467217033}
   m_Father: {fileID: 1854542754}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1944240701
 MonoBehaviour:
@@ -1570,6 +1598,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019226734}
   m_CullTransparentMesh: 1
+--- !u!1 &2051127373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2051127374}
+  - component: {fileID: 2051127375}
+  m_Layer: 0
+  m_Name: Chart Presenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2051127374
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051127373}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1854542754}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2051127375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051127373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb93911c2af5cc344a735473b3d38e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonFileName: kirakiraboshi_chart
+  noteGenerator: {fileID: 303231809}
+  settings: {fileID: 11400000, guid: aa1e95fe4604e3c4e826d83d691bf309, type: 2}
+  constants: {fileID: 11400000, guid: 07e56e9be33a6f7498d242e3d83b7260, type: 2}
+  audioSource: {fileID: 1070534627}
+  noteSpawnX: 15
+  title: {fileID: 1579073442}
 --- !u!1 &2052942208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1600,7 +1679,7 @@ Transform:
   m_Children:
   - {fileID: 1456993730}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2096211816
 GameObject:

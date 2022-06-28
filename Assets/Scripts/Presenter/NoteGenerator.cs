@@ -16,13 +16,18 @@ public class NoteGenerator : MonoBehaviour {
     [SerializeField]
     private float rotateOffset;
     [SerializeField]
-    private ScorePresenter scorePresenter;
-    public void Generate(Chart.Note noteData, float noteSpawnX)
+    private JudgePresenter judgePresenter;
+    private float noteSpawnX;
+
+    public void setNoteSpawnX(float noteSpawnX)
+    {
+        this.noteSpawnX = noteSpawnX;
+        judgePresenter.setDistanceOffset(noteSpawnX / settings.notesSpeed);
+    }
+
+    public void Generate(Chart.Note noteData)
     {
         GameObject note = Instantiate(notePrefab);
-        NotePresenter notePresenter = note.GetComponent<NotePresenter>();
-        notePresenter.scorePresenter = scorePresenter;
-        notePresenter.Init(noteSpawnX / settings.notesSpeed + Time.time);
         foreach (var tone in noteData.tone)
         {
             GameObject noteSprite = Instantiate(noteSpritePrefab);
@@ -36,5 +41,6 @@ public class NoteGenerator : MonoBehaviour {
             NoteSpritePresenter noteSpritePresenter = noteSprite.GetComponent<NoteSpritePresenter>();
             noteSpritePresenter.Init(noteData.length);
         }
+        judgePresenter.AddNote(note);
     }
 }
