@@ -36,7 +36,7 @@ public class JudgePresenter : MonoBehaviour
         if(notes.Count == 0)
             return;
         float deltaTime = notes.Peek().startTime + distanceOffset - Time.time;
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.J)||Input.GetKeyDown(KeyCode.F)||Input.GetKeyDown(KeyCode.Space))
             Judge(deltaTime);
         if(deltaTime < -judgeTiming.missSecond)
         {
