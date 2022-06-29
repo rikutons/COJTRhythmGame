@@ -1648,6 +1648,7 @@ MonoBehaviour:
   constants: {fileID: 11400000, guid: 07e56e9be33a6f7498d242e3d83b7260, type: 2}
   audioSource: {fileID: 1070534627}
   noteSpawnX: 15
+  waitSecond: 3
   title: {fileID: 1579073442}
 --- !u!1 &2052942208
 GameObject:

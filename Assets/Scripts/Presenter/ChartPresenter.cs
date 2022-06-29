@@ -19,6 +19,8 @@ public class ChartPresenter : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField]
     private float noteSpawnX;
+    [SerializeField]
+    private int waitSecond;
     private Chart chart;
     private int noteIndex = 0;
     private double startTime = 0;
@@ -29,15 +31,19 @@ public class ChartPresenter : MonoBehaviour
     async void Start()
     {
         chart = JsonReader.Read(jsonFileName);
-        noteIndex = 0;
         var clip = await Resources.LoadAsync<AudioClip>("Musics/" + chart.path);
+        noteIndex = 0;
         audioSource.clip = clip as AudioClip;
-        startTime = Time.time;
-
-        title.text = chart.title.ToString();
-
-        audioSource.PlayDelayed(noteSpawnX / settings.notesSpeed + constants.timeOffset);
         noteGenerator.setNoteSpawnX(noteSpawnX);
+        title.text = chart.title.ToString();
+        StartPlaying();
+    }
+
+    private async void StartPlaying()
+    {
+        await UniTask.Delay(waitSecond);
+        startTime = Time.time;
+        audioSource.PlayDelayed(noteSpawnX / settings.notesSpeed + constants.timeOffset);
         this.UpdateAsObservable()
             .Where(_ => noteIndex < chart.notes.Length)
             .Where(_ => chart.notes[noteIndex].timing <= (Time.time - startTime))

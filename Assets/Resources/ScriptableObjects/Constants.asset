@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5b8b2ab1de86142bf52dfe6730dab7, type: 3}
   m_Name: Constants
   m_EditorClassIdentifier: 
-  timeOffset: 0.78
+  timeOffset: 0
