@@ -12,10 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb8082efced2384bb16237979a1c49b, type: 3}
   m_Name: Rank Percents Model
   m_EditorClassIdentifier: 
-  RankPercents:
-  - rankName: AP
-    percent: 100
-    color: {r: 1, g: 0, b: 0.9761739, a: 0}
+  clearPercent: 90
+  ranks:
+  - rankName: SSS
+    percent: 99
+    color: {r: 0.95360184, g: 1, b: 0, a: 1}
+  - rankName: SS
+    percent: 98
+    color: {r: 0.95360184, g: 1, b: 0, a: 1}
   - rankName: S
     percent: 97
-    color: {r: 0.8343433, g: 1, b: 0, a: 0}
+    color: {r: 0.98566103, g: 1, b: 0, a: 1}
+  - rankName: AAA
+    percent: 95
+    color: {r: 1, g: 0.6890694, b: 0, a: 1}
+  - rankName: AA
+    percent: 93
+    color: {r: 1, g: 0.3592616, b: 0, a: 1}
+  - rankName: A
+    percent: 90
+    color: {r: 0.9528302, g: 0.30922034, b: 0.5818082, a: 1}
+  - rankName: BBB
+    percent: 80
+    color: {r: 1, g: 0, b: 0.9991255, a: 1}
+  - rankName: BB
+    percent: 70
+    color: {r: 0.6723013, g: 0, b: 1, a: 1}
+  - rankName: B
+    percent: 60
+    color: {r: 0.21697569, g: 0, b: 1, a: 1}
+  - rankName: C
+    percent: 50
+    color: {r: 0, g: 1, b: 0.30706453, a: 1}
+  - rankName: D
+    percent: -1
+    color: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}

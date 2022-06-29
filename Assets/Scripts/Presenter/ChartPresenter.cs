@@ -18,6 +18,8 @@ public class ChartPresenter : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
     [SerializeField]
+    private ResultPresenter resultPresenter;
+    [SerializeField]
     private float noteSpawnX;
     [SerializeField]
     private int waitSecond;
@@ -51,6 +53,15 @@ public class ChartPresenter : MonoBehaviour
             {
                 noteGenerator.Generate(chart.notes[noteIndex]);
                 noteIndex++;
+            }
+        );
+        this.UpdateAsObservable()
+            .Where(_ => !audioSource.isPlaying)
+            .Take(1)
+            .Subscribe(_ =>
+            {
+                Debug.Log("show");
+                resultPresenter.Show();
             }
         );
     }
