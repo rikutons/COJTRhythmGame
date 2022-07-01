@@ -20,5 +20,8 @@
         {"length":"4", "tone":[1]},
         {"length":"4", "tone":[1]},
         {"length":"2", "tone":[0]}
+    ],
+    "bars": [
+        4, 8, 12
     ]
   }
