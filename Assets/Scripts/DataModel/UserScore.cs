@@ -11,5 +11,17 @@ namespace DataModel
         public int Combo { get => _combo.Value; set => _combo.Value = value; }
         public System.IObservable<int> onComboChanged => _combo;
         private readonly UniRx.ReactiveProperty<int> _combo = new();
+        public int PerfectCount { get => _perfectCount.Value; set => _perfectCount.Value = value; }
+        public System.IObservable<int> onPerfectCountChanged => _perfectCount;
+        private readonly UniRx.ReactiveProperty<int> _perfectCount = new();
+        public int GreatCount { get => _greatCount.Value; set => _greatCount.Value = value; }
+        public System.IObservable<int> onGreatCountChanged => _greatCount;
+        private readonly UniRx.ReactiveProperty<int> _greatCount = new();
+        public int GoodCount { get => _goodCount.Value; set => _goodCount.Value = value; }
+        public System.IObservable<int> onGoodCountChanged => _goodCount;
+        private readonly UniRx.ReactiveProperty<int> _goodCount = new();
+        public int MissCount { get => _missCount.Value; set => _missCount.Value = value; }
+        public System.IObservable<int> onMissCountChanged => _missCount;
+        private readonly UniRx.ReactiveProperty<int> _missCount = new();
     }
 }

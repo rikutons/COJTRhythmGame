@@ -50,20 +50,24 @@ public class ScorePresenter : MonoBehaviour
             case "perfect":
                 userScore.Score += judgeScore.perfectScore;
                 userScore.Combo++;
+                userScore.PerfectCount++;
                 audioSource.volume = defaultVolume;
                 break;
             case "great":
                 userScore.Score += judgeScore.greatScore;
                 userScore.Combo++;
+                userScore.GreatCount++;
                 audioSource.volume = defaultVolume;
                 break;
             case "good":
                 userScore.Score += judgeScore.goodScore;
                 userScore.Combo++;
+                userScore.GoodCount++;
                 audioSource.volume = defaultVolume;
                 break;
             case "miss":
                 userScore.Combo = 0;
+                userScore.MissCount++;
                 audioSource.volume = defaultVolume * 0.3f;
                 break;
         }

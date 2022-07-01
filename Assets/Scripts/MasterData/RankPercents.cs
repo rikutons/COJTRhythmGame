@@ -12,6 +12,7 @@ namespace MasterData
     [CreateAssetMenu]
     public class RankPercents : ScriptableObject
     {
+        public float clearPercent;
         public Rank[] ranks;
     }
 }
