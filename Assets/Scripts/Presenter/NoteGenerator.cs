@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class NoteGenerator : MonoBehaviour {
     [SerializeField]
@@ -33,13 +34,18 @@ public class NoteGenerator : MonoBehaviour {
             GameObject noteSprite = Instantiate(noteSpritePrefab);
             noteSprite.transform.position = judgeLineTransform.position + Vector3.right * noteSpawnX + Vector3.up * (C4Pos + tone * toneHeight);
             noteSprite.transform.parent = note.transform;
-            if(tone >= 6)
+            bool isRest = Array.Exists(noteData.pitches, x => x == '-');
+            if(!isRest && tone >= 6)
             {
                 noteSprite.transform.Rotate(Vector3.back * 180);
                 noteSprite.transform.position -= Vector3.up * (rotateOffset);
             }
             NoteSpritePresenter noteSpritePresenter = noteSprite.GetComponent<NoteSpritePresenter>();
-            noteSpritePresenter.Init(noteData.length);
+            if(isRest){
+                noteSpritePresenter.Init(noteData.length + "rest");
+            }else {
+                noteSpritePresenter.Init(noteData.length);
+            }
         }
         judgePresenter.AddNote(note);
     }
