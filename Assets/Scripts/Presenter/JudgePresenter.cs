@@ -1,12 +1,18 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class JudgePresenter : MonoBehaviour
 {
+    enum NoteType
+    {
+        normal,
+        accent,
+    }
     struct NoteObject
     {
         public float startTime;
+        public NoteType type;
         public GameObject note;
     }
     [SerializeField]
@@ -36,6 +42,9 @@ public class JudgePresenter : MonoBehaviour
         }
         NoteObject noteObject;
         noteObject.note = note;
+        noteObject.type = NoteType.normal;
+        if(Array.Exists(type, x => x == "accent"))
+            noteObject.type = NoteType.accent;
         noteObject.startTime = Time.time;
         notes.Enqueue(noteObject);
     }
@@ -44,9 +53,19 @@ public class JudgePresenter : MonoBehaviour
     {
         if(notes.Count == 0)
             return;
-        float deltaTime = notes.Peek().startTime + distanceOffset - Time.time;
-        if(Input.GetKeyDown(KeyCode.J)||Input.GetKeyDown(KeyCode.F)||Input.GetKeyDown(KeyCode.Space))
-            Judge(deltaTime);
+        NoteObject nowNote = notes.Peek();
+        float deltaTime = nowNote.startTime + distanceOffset - Time.time;
+        switch (nowNote.type)
+        {
+        case NoteType.normal:
+            if(Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Space))
+                Judge(deltaTime);
+                break;
+        case NoteType.accent:
+            if(Input.GetKeyDown(KeyCode.J) && Input.GetKeyDown(KeyCode.F))
+                Judge(deltaTime);
+                break;
+        }
         if(isDebugMode && deltaTime < 0)
         {
             scorePresenter.AddScore("perfect");
