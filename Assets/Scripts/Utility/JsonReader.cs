@@ -33,8 +33,12 @@ public class JsonReader : MonoBehaviour
             chart.notes[i].isTuplet = chart.notes[i].isTuplet;
             for (int j = 0; j < n.tone.Length; j++)
             {
-                chart.notes[i].tone[j] = Int32.Parse(Regex.Match(n.tone[j], "[0-9]+").Value);
-                Match note_pitch_match = Regex.Match(n.length, "[#b]");
+                Match tone_match = Regex.Match(n.tone[j], "[0-9]+");
+                if(tone_match.Index > 0)
+                    chart.notes[i].tone[j] = Int32.Parse(tone_match.Value);
+                else
+                    chart.notes[i].tone[j] = 8;
+                Match note_pitch_match = Regex.Match(n.length, "[#b-]");
                 if(note_pitch_match.Index > 0)
                     chart.notes[i].pitches[j] = note_pitch_match.Value[0];
             }
