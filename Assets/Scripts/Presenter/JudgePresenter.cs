@@ -27,8 +27,13 @@ public class JudgePresenter : MonoBehaviour
         this.distanceOffset = distanceOffset;
     }
 
-    public void AddNote(GameObject note)
+    public void AddNote(GameObject note, string[] type)
     {
+        if(Array.Exists(type, x => x == "rest"))
+        {
+            Destroy(note, distanceOffset + 3f);
+            return;
+        }
         NoteObject noteObject;
         noteObject.note = note;
         noteObject.startTime = Time.time;

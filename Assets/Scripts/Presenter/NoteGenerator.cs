@@ -29,12 +29,12 @@ public class NoteGenerator : MonoBehaviour {
     public void Generate(Chart.Note noteData)
     {
         GameObject note = Instantiate(notePrefab);
+        bool isRest = Array.Exists(noteData.pitches, x => x == '-');
         foreach (var tone in noteData.tone)
         {
             GameObject noteSprite = Instantiate(noteSpritePrefab);
             noteSprite.transform.position = judgeLineTransform.position + Vector3.right * noteSpawnX + Vector3.up * (C4Pos + tone * toneHeight);
             noteSprite.transform.parent = note.transform;
-            bool isRest = Array.Exists(noteData.pitches, x => x == '-');
             if(!isRest && tone >= 6)
             {
                 noteSprite.transform.Rotate(Vector3.back * 180);
@@ -47,6 +47,6 @@ public class NoteGenerator : MonoBehaviour {
                 noteSpritePresenter.Init(noteData.length);
             }
         }
-        judgePresenter.AddNote(note);
+        judgePresenter.AddNote(note, isRest ? new string[]{"rest"} : noteData.options);
     }
 }
