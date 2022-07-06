@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Note Images
   m_EditorClassIdentifier: 
   noteImages:
+  - code: 1
+    sprite: {fileID: 21300000, guid: a42d1ac06b84e1f4a91aeecb17bf1394, type: 3}
+  - code: 2
+    sprite: {fileID: 21300000, guid: a618ff6f703e17748adcd2cc68b9f76a, type: 3}
   - code: 4
     sprite: {fileID: 21300000, guid: 59f33f43fd85ab74e8000649a9645f06, type: 3}
   - code: 8
     sprite: {fileID: 21300000, guid: c81aa245bbf66d341ad89c15adb2630e, type: 3}
-  - code: 2
-    sprite: {fileID: 21300000, guid: a618ff6f703e17748adcd2cc68b9f76a, type: 3}
+  - code: 16
+    sprite: {fileID: 21300000, guid: ec5ac2e5747f2824bbe9b5ca12c24c8e, type: 3}
