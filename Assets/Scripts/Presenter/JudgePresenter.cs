@@ -20,7 +20,7 @@ public class JudgePresenter : MonoBehaviour
     [SerializeField]
     private MasterData.JudgeTiming judgeTiming;
     [SerializeField]
-    private ScorePresenter scorePresenter;
+    private DataModel.UserScore userScore;
     [SerializeField]
     private AudioSource debugSE;
     [SerializeField]
@@ -68,13 +68,13 @@ public class JudgePresenter : MonoBehaviour
         }
         if(isDebugMode && deltaTime < 0)
         {
-            scorePresenter.AddScore("perfect");
+            userScore.PerfectCount++;
             debugSE.Play();
             Destroy(notes.Dequeue().note);
         }
         if(deltaTime < -judgeTiming.missSecond)
         {
-            scorePresenter.AddScore("miss");
+            userScore.MissCount++;
             Destroy(notes.Dequeue().note, 3f);
         }
     }
@@ -86,13 +86,13 @@ public class JudgePresenter : MonoBehaviour
             return;
 
         if(absDeltaTime < judgeTiming.perfectSecond)
-            scorePresenter.AddScore("perfect");
+            userScore.PerfectCount++;
         else if(absDeltaTime < judgeTiming.greatSecond)
-            scorePresenter.AddScore("great");
+            userScore.GreatCount++;
         else if(absDeltaTime < judgeTiming.goodSecond)
-            scorePresenter.AddScore("good");
+            userScore.GoodCount++;
         else if(absDeltaTime < judgeTiming.missSecond)
-            scorePresenter.AddScore("miss");
+            userScore.MissCount++;
         Destroy(notes.Dequeue().note);
     }
 }

@@ -23,5 +23,12 @@ namespace DataModel
         public int MissCount { get => _missCount.Value; set => _missCount.Value = value; }
         public System.IObservable<int> onMissCountChanged => _missCount;
         private readonly UniRx.ReactiveProperty<int> _missCount = new();
+        public UniRx.Subject<Unit> onSuccess = new();
+        private void Start()
+        {
+            onPerfectCountChanged.Subscribe(_ => onSuccess.OnNext(Unit.Default));
+            onGreatCountChanged.Subscribe(_ => onSuccess.OnNext(Unit.Default));
+            onGoodCountChanged.Subscribe(_ => onSuccess.OnNext(Unit.Default));
+        }
     }
 }

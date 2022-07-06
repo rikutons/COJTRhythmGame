@@ -15,95 +15,17 @@ public class ScorePresenter : MonoBehaviour
     private TextMeshProUGUI comboText;
     [SerializeField]
     private MasterData.JudgeScore judgeScore;
-    [SerializeField]
-    private AudioSource audioSource;
-
-    [SerializeField]
-    private GameObject miss;
-    [SerializeField]
-    private GameObject good;
-    [SerializeField]
-    private GameObject great;
-    [SerializeField]
-    private GameObject perfect;
-
-    private float defaultVolume;
 
     void Start()
     {
-        userScore.onScoreChanged.Subscribe(score =>
-        {
-            scoreText.text = "Score: " + score.ToString();
-        });
-        userScore.onComboChanged.Subscribe(combo =>
-        {
-            comboText.text = "Combo: " + combo.ToString();
-        });
-        defaultVolume = audioSource.volume;
-    }
+        userScore.onScoreChanged.Subscribe(score => scoreText.text = "Score: " + score.ToString());
+        userScore.onComboChanged.Subscribe(combo => comboText.text = "Combo: " + combo.ToString());
 
-    public void AddScore(string judge)
-    {
-        ShowJudgeMessage(judge);
-        switch (judge)
-        {
-            case "perfect":
-                userScore.Score += judgeScore.perfectScore;
-                userScore.Combo++;
-                userScore.PerfectCount++;
-                audioSource.volume = defaultVolume;
-                break;
-            case "great":
-                userScore.Score += judgeScore.greatScore;
-                userScore.Combo++;
-                userScore.GreatCount++;
-                audioSource.volume = defaultVolume;
-                break;
-            case "good":
-                userScore.Score += judgeScore.goodScore;
-                userScore.Combo++;
-                userScore.GoodCount++;
-                audioSource.volume = defaultVolume;
-                break;
-            case "miss":
-                userScore.Combo = 0;
-                userScore.MissCount++;
-                audioSource.volume = defaultVolume * 0.3f;
-                break;
-        }
-    }
+        userScore.onPerfectCountChanged.Subscribe(_ => userScore.Score += judgeScore.perfectScore);
+        userScore.onGreatCountChanged.Subscribe(_ => userScore.Score += judgeScore.greatScore);
+        userScore.onGoodCountChanged.Subscribe(_ => userScore.Score += judgeScore.goodScore);
 
-
-    private void ShowJudgeMessage(string judge) {
-        switch(judge){
-            case "perfect":
-                perfect.SetActive(false);
-                perfect.SetActive(true);
-
-                Observable.Timer(TimeSpan.FromMilliseconds(200))
-                .Subscribe(_ => perfect.SetActive(false));
-                break;
-            case "great":
-                great.SetActive(false);
-                great.SetActive(true);
-
-                Observable.Timer(TimeSpan.FromMilliseconds(200))
-                .Subscribe(_ => great.SetActive(false));
-                break;
-            case "good":
-                good.SetActive(false);
-                good.SetActive(true);
-
-                Observable.Timer(TimeSpan.FromMilliseconds(200))
-                .Subscribe(_ => good.SetActive(false));
-                break;
-            case "miss":
-                miss.SetActive(false);
-                miss.SetActive(true);
-
-                Observable.Timer(TimeSpan.FromMilliseconds(200))
-                .Subscribe(_ => miss.SetActive(false));
-                break;
-        }
+        userScore.onSuccess.Subscribe(_ => userScore.Combo++);
+        userScore.onMissCountChanged.Subscribe(_ => userScore.Combo = 0);
     }
 }

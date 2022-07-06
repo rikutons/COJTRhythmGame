@@ -354,7 +354,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1944240700}
+  m_Father: {fileID: 1653092498}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &231690347
@@ -660,6 +660,7 @@ Transform:
   m_Children:
   - {fileID: 1798446633}
   - {fileID: 1706954149}
+  - {fileID: 1653092498}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -744,7 +745,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1944240700}
+  m_Father: {fileID: 1653092498}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &467217034
@@ -799,6 +800,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &502660516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 502660517}
+  - component: {fileID: 502660518}
+  m_Layer: 0
+  m_Name: Effect Presenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &502660517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502660516}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1854542754}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &502660518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502660516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ac88b870e01f62448c23c6276c5785a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userScore: {fileID: 1456993731}
+  missText: {fileID: 467217032}
+  goodText: {fileID: 1153946603}
+  greatText: {fileID: 231690345}
+  perfectText: {fileID: 2096211816}
+  audioSource: {fileID: 1070534627}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,7 +2160,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2324,7 +2375,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1944240700}
+  m_Father: {fileID: 1653092498}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1153946605
@@ -2844,9 +2895,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: aa1e95fe4604e3c4e826d83d691bf309, type: 2}
   judgeTiming: {fileID: 11400000, guid: 51b9968f2d6e85b45a172ede78c1f2e8, type: 2}
-  scorePresenter: {fileID: 1944240701}
+  userScore: {fileID: 1456993731}
   debugSE: {fileID: 1425978013}
-  isDebugMode: 1
+  isDebugMode: 0
 --- !u!82 &1425978013
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3605,6 +3656,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645576021}
   m_CullTransparentMesh: 1
+--- !u!1 &1653092497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1653092498}
+  m_Layer: 0
+  m_Name: Judge Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1653092498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653092497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2096211817}
+  - {fileID: 231690346}
+  - {fileID: 1153946604}
+  - {fileID: 467217033}
+  m_Father: {fileID: 293439569}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1706954148
 GameObject:
   m_ObjectHideFlags: 0
@@ -4028,6 +4114,7 @@ Transform:
   - {fileID: 1425978011}
   - {fileID: 1944240700}
   - {fileID: 1568062066}
+  - {fileID: 502660517}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4126,11 +4213,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2096211817}
-  - {fileID: 231690346}
-  - {fileID: 1153946604}
-  - {fileID: 467217033}
+  m_Children: []
   m_Father: {fileID: 1854542754}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4150,11 +4233,6 @@ MonoBehaviour:
   scoreText: {fileID: 1732183004}
   comboText: {fileID: 2019226736}
   judgeScore: {fileID: 11400000, guid: df9f4921e0f083c4688ec2b8ab2284a1, type: 2}
-  audioSource: {fileID: 1070534627}
-  miss: {fileID: 467217032}
-  good: {fileID: 1153946603}
-  great: {fileID: 231690345}
-  perfect: {fileID: 2096211816}
 --- !u!1 &2019226734
 GameObject:
   m_ObjectHideFlags: 0
@@ -4355,7 +4433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb93911c2af5cc344a735473b3d38e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonFileName: PsychedFevereiro_chart
+  jsonFileName: kirakiraboshi_chart
   noteGenerator: {fileID: 303231809}
   settings: {fileID: 11400000, guid: aa1e95fe4604e3c4e826d83d691bf309, type: 2}
   constants: {fileID: 11400000, guid: 07e56e9be33a6f7498d242e3d83b7260, type: 2}
@@ -4425,7 +4503,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1944240700}
+  m_Father: {fileID: 1653092498}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2096211818
