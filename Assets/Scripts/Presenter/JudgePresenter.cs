@@ -15,6 +15,10 @@ public class JudgePresenter : MonoBehaviour
     private MasterData.JudgeTiming judgeTiming;
     [SerializeField]
     private ScorePresenter scorePresenter;
+    [SerializeField]
+    private AudioSource debugSE;
+    [SerializeField]
+    private bool isDebugMode;
     private float distanceOffset;
     Queue<NoteObject> notes = new Queue<NoteObject>();
 
@@ -38,6 +42,12 @@ public class JudgePresenter : MonoBehaviour
         float deltaTime = notes.Peek().startTime + distanceOffset - Time.time;
         if(Input.GetKeyDown(KeyCode.J)||Input.GetKeyDown(KeyCode.F)||Input.GetKeyDown(KeyCode.Space))
             Judge(deltaTime);
+        if(isDebugMode && deltaTime < 0)
+        {
+            scorePresenter.AddScore("perfect");
+            debugSE.Play();
+            Destroy(notes.Dequeue().note);
+        }
         if(deltaTime < -judgeTiming.missSecond)
         {
             scorePresenter.AddScore("miss");
