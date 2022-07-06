@@ -30,6 +30,7 @@ public class JsonReader : MonoBehaviour
             JsonChart.Note n = jsonChart.notes[i];
             chart.notes[i].tone = new int[n.tone.Length];
             chart.notes[i].pitches = new char[n.tone.Length];
+            chart.notes[i].isTuplet = chart.notes[i].isTuplet;
             for (int j = 0; j < n.tone.Length; j++)
             {
                 chart.notes[i].tone[j] = Int32.Parse(Regex.Match(n.tone[j], "[0-9]+").Value);

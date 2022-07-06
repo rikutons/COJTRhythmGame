@@ -12,6 +12,7 @@ public class Chart
         public int[] tone;
         public char[] pitches;
         public double timing;
+        public bool isTuplet;
     };
     public string title;
     public float difficutly;

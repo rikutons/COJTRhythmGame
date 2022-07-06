@@ -5,7 +5,8 @@
   "bpm": 120,
   "beat": "4/4",
   "notes": [
-    { "length": "4", "tone" : [40] }
+    { "length": "4", "tone" : [40] },
+    { "length": "4", "tone" : [40], "istuplet" : true }
   ], 
   "bars": [
     4, 8, 12

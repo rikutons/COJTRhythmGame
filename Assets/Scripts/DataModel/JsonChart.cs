@@ -12,6 +12,7 @@ namespace COJTRhythmGame.JsonUtil
             public string length;
             public string[] tone;
             public string[] option;
+            public bool istuplet;
         }
         public string title;
         public float difficulty;
