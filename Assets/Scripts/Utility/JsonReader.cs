@@ -38,7 +38,7 @@ public class JsonReader : MonoBehaviour
                     chart.notes[i].tone[j] = Int32.Parse(tone_match.Value);
                 else
                     chart.notes[i].tone[j] = 8;
-                Match note_pitch_match = Regex.Match(n.length, "[#b-]");
+                Match note_pitch_match = Regex.Match(n.tone[j], "[#b-]");
                 if(note_pitch_match.Success)
                     chart.notes[i].pitches[j] = note_pitch_match.Value[0];
             }
