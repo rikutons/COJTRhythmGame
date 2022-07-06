@@ -34,12 +34,12 @@ public class JsonReader : MonoBehaviour
             for (int j = 0; j < n.tone.Length; j++)
             {
                 Match tone_match = Regex.Match(n.tone[j], "[0-9]+");
-                if(tone_match.Index > 0)
+                if(tone_match.Success)
                     chart.notes[i].tone[j] = Int32.Parse(tone_match.Value);
                 else
                     chart.notes[i].tone[j] = 8;
                 Match note_pitch_match = Regex.Match(n.length, "[#b-]");
-                if(note_pitch_match.Index > 0)
+                if(note_pitch_match.Success)
                     chart.notes[i].pitches[j] = note_pitch_match.Value[0];
             }
             chart.notes[i].length = n.length;
@@ -50,7 +50,7 @@ public class JsonReader : MonoBehaviour
             chart.notes[i].timing = timing;
             double length = Int32.Parse(Regex.Match(n.length, "[0-9]+").Value);
             Match length_mod_match = Regex.Match(n.length, "[.#]");
-            if(length_mod_match.Index > 0)
+            if(length_mod_match.Success)
             {
                 char length_mod = length_mod_match.Value[0];
                 if(length_mod == '.')
