@@ -4263,7 +4263,7 @@ MonoBehaviour:
   audioSource: {fileID: 1070534627}
   resultPresenter: {fileID: 1568062067}
   noteSpawnX: 15
-  waitSecond: 3
+  waitSecond: 10
   title: {fileID: 1579073442}
 --- !u!1 &2052942208
 GameObject:

@@ -8,7 +8,9 @@ public class Chart
     {
         public string length;
         public string kind;
+        public string[] options;
         public int[] tone;
+        public char[] pitches;
         public double timing;
     };
     public string title;

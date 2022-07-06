@@ -10,9 +10,8 @@ namespace COJTRhythmGame.JsonUtil
         public struct Note
         {
             public string length;
-            public string kind;
-            public int[] timing;
-            public int[] tone;
+            public string[] tone;
+            public string[] option;
         }
         public string title;
         public float difficulty;

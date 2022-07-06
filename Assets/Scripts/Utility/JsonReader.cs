@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using COJTRhythmGame.JsonUtil;
 
@@ -23,14 +24,36 @@ public class JsonReader : MonoBehaviour
         int upper = int.Parse(values[0]);
         int lower = int.Parse(values[1]);
         chart.notes = new Chart.Note[jsonChart.notes.Length];
+        double timing = 0;
         for (int i = 0; i < jsonChart.notes.Length; i++)
         {
             JsonChart.Note n = jsonChart.notes[i];
             chart.notes[i].tone = new int[n.tone.Length];
-            Array.Copy(n.tone, chart.notes[i].tone, n.tone.Length);
+            chart.notes[i].pitches = new char[n.tone.Length];
+            for (int j = 0; j < n.tone.Length; j++)
+            {
+                chart.notes[i].tone[j] = Int32.Parse(Regex.Match(n.tone[j], "[0-9]+").Value);
+                Match note_pitch_match = Regex.Match(n.length, "[#b]");
+                if(note_pitch_match.Index > 0)
+                    chart.notes[i].pitches[j] = note_pitch_match.Value[0];
+            }
             chart.notes[i].length = n.length;
-            chart.notes[i].kind = n.kind;
-            chart.notes[i].timing = (((double)n.timing[0] - 1) * upper / lower * 4 + (double)(n.timing[1] - 1)) / chart.bpm * 60;
+            if(n.option != null)
+                Array.Copy(n.option, chart.notes[i].options, n.option.Length);
+            else
+                chart.notes[i].options = new string[0];
+            chart.notes[i].timing = timing;
+            double length = Int32.Parse(Regex.Match(n.length, "[0-9]+").Value);
+            Match length_mod_match = Regex.Match(n.length, "[.#]");
+            if(length_mod_match.Index > 0)
+            {
+                char length_mod = length_mod_match.Value[0];
+                if(length_mod == '.')
+                    length /= 1.5;
+                if(length_mod == '/')
+                    length *= 2;
+            }
+            timing += 4 / length / chart.bpm * 60;
         }
         return chart;
     }
