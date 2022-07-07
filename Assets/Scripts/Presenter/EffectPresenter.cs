@@ -16,11 +16,18 @@ public class EffectPresenter : MonoBehaviour
     private GameObject perfectText;
     [SerializeField]
     private AudioSource audioSource;
+    [SerializeField]
+    private ParticleSystem perfectParticle;
+    [SerializeField]
+    private ParticleSystem greatParticle;
+    [SerializeField]
+    private ParticleSystem goodParticle;
 
     private void Start()
     {
         SubAudioEvent();
         SubTextEvent();
+        SubParticleEvent();
     }
 
     private void SubAudioEvent()
@@ -32,33 +39,16 @@ public class EffectPresenter : MonoBehaviour
 
     private void SubTextEvent()
     {
-        userScore.onPerfectCountChanged.Subscribe(_ =>
-        {
-            perfectText.SetActive(true);
+        userScore.onPerfectCountChanged.Subscribe(_ => Instantiate(perfectText));
+        userScore.onGreatCountChanged.Subscribe(_ => Instantiate(greatText));
+        userScore.onGoodCountChanged.Subscribe(_ => Instantiate(goodText));
+        userScore.onMissCountChanged.Subscribe(_ => Instantiate(missText));
+    }
 
-            Observable.Timer(TimeSpan.FromMilliseconds(200))
-                      .Subscribe(_ => perfectText.SetActive(false));
-        });
-        userScore.onGreatCountChanged.Subscribe(_ =>
-        {
-            greatText.SetActive(true);
-
-            Observable.Timer(TimeSpan.FromMilliseconds(200))
-                      .Subscribe(_ => greatText.SetActive(false));
-        });
-        userScore.onGoodCountChanged.Subscribe(_ =>
-        {
-            goodText.SetActive(true);
-
-            Observable.Timer(TimeSpan.FromMilliseconds(200))
-                      .Subscribe(_ => goodText.SetActive(false));
-        });
-        userScore.onMissCountChanged.Subscribe(_ =>
-        {
-            missText.SetActive(true);
-
-            Observable.Timer(TimeSpan.FromMilliseconds(200))
-                      .Subscribe(_ => missText.SetActive(false));
-        });
+    private void SubParticleEvent()
+    {
+        userScore.onPerfectCountChanged.Subscribe(_ => perfectParticle.Play());
+        userScore.onGreatCountChanged.Subscribe(_ => greatParticle.Play());
+        userScore.onGoodCountChanged.Subscribe(_ => goodParticle.Play());
     }
 }
