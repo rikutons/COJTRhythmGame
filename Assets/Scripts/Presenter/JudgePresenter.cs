@@ -8,6 +8,9 @@ public class JudgePresenter : MonoBehaviour
     {
         normal,
         accent,
+        tieStart,
+        tieMid,
+        tieEnd,
     }
     struct NoteObject
     {
@@ -33,6 +36,7 @@ public class JudgePresenter : MonoBehaviour
         this.distanceOffset = distanceOffset;
     }
 
+    private bool beforeIsTie = false;
     public void AddNote(GameObject note, string[] type)
     {
         if(Array.Exists(type, x => x == "rest"))
@@ -42,9 +46,20 @@ public class JudgePresenter : MonoBehaviour
         }
         NoteObject noteObject;
         noteObject.note = note;
-        noteObject.type = NoteType.normal;
+
+        bool isTie = Array.Exists(type, x => x == "tie");
         if(Array.Exists(type, x => x == "accent"))
             noteObject.type = NoteType.accent;
+        else if(!beforeIsTie && isTie)
+            noteObject.type = NoteType.tieStart;
+        else if(beforeIsTie && isTie)
+            noteObject.type = NoteType.tieMid;
+        else if(beforeIsTie && !isTie)
+            noteObject.type = NoteType.tieEnd;
+        else
+            noteObject.type = NoteType.normal;
+        beforeIsTie = isTie;
+
         noteObject.startTime = Time.time;
         notes.Enqueue(noteObject);
     }
@@ -58,13 +73,23 @@ public class JudgePresenter : MonoBehaviour
         switch (nowNote.type)
         {
         case NoteType.normal:
+        case NoteType.tieStart:
             if(Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Space))
                 Judge(deltaTime);
-                break;
+            break;
+        case NoteType.tieMid:
+            if(Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.Space))
+                if(deltaTime <= 0)
+                    Judge(deltaTime);
+            break;
+        case NoteType.tieEnd:
+            if(Input.GetKeyUp(KeyCode.J) || Input.GetKeyUp(KeyCode.F) || Input.GetKeyUp(KeyCode.Space))
+                Judge(deltaTime, true);
+            break;
         case NoteType.accent:
             if(Input.GetKeyDown(KeyCode.J) && Input.GetKeyDown(KeyCode.F))
                 Judge(deltaTime);
-                break;
+            break;
         }
         if(isDebugMode && deltaTime < 0)
         {
@@ -79,10 +104,10 @@ public class JudgePresenter : MonoBehaviour
         }
     }
 
-    private void Judge(float deltaTime)
+    private void Judge(float deltaTime, bool fastVanish = false)
     {
         float absDeltaTime = Mathf.Abs(deltaTime);
-        if(absDeltaTime >= judgeTiming.missSecond)
+        if(!fastVanish && absDeltaTime >= judgeTiming.missSecond)
             return;
 
         if(absDeltaTime < judgeTiming.perfectSecond)
