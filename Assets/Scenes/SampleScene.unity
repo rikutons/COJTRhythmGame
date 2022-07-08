@@ -11737,7 +11737,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -17295,7 +17295,7 @@ MonoBehaviour:
   judgeTiming: {fileID: 11400000, guid: 51b9968f2d6e85b45a172ede78c1f2e8, type: 2}
   userScore: {fileID: 1456993731}
   debugSE: {fileID: 1425978013}
-  isDebugMode: 0
+  isDebugMode: 1
 --- !u!82 &1425978013
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18796,7 +18796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb93911c2af5cc344a735473b3d38e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonFileName: PsychedFevereiro_chart
+  jsonFileName: kirakiraboshi_chart
   noteGenerator: {fileID: 303231809}
   settings: {fileID: 11400000, guid: aa1e95fe4604e3c4e826d83d691bf309, type: 2}
   constants: {fileID: 11400000, guid: 07e56e9be33a6f7498d242e3d83b7260, type: 2}
