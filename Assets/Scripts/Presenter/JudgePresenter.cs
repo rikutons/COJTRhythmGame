@@ -91,6 +91,7 @@ public class JudgePresenter : MonoBehaviour
         if(isDebugMode && deltaTime < 0)
         {
             userScore.PerfectCount++;
+            if(nowNote.type != NoteType.tieMid && nowNote.type != NoteType.tieEnd)
             debugSE.Play();
             Destroy(notes.Dequeue().note);
         }
