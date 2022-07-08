@@ -30,6 +30,7 @@ public class NoteGenerator : MonoBehaviour {
     {
         GameObject note = Instantiate(notePrefab);
         bool isRest = Array.Exists(noteData.pitches, x => x == '-');
+        bool isAccent = Array.Exists(noteData.options, x => x == "accent"); // For debug
         foreach (var tone in noteData.tone)
         {
             GameObject noteSprite = Instantiate(noteSpritePrefab);
@@ -46,6 +47,8 @@ public class NoteGenerator : MonoBehaviour {
             }else {
                 noteSpritePresenter.Init(noteData.length);
             }
+            if(isAccent)
+                noteSprite.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.5f); // for debug アクセントを薄くする
         }
         judgePresenter.AddNote(note, isRest ? new string[]{"rest"} : noteData.options);
     }
