@@ -78,13 +78,10 @@ public class JudgePresenter : MonoBehaviour
                 Judge(deltaTime);
             break;
         case NoteType.tieMid:
+        case NoteType.tieEnd:
             if(Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.Space))
                 if(deltaTime <= 0)
                     Judge(deltaTime);
-            break;
-        case NoteType.tieEnd:
-            if(Input.GetKeyUp(KeyCode.J) || Input.GetKeyUp(KeyCode.F) || Input.GetKeyUp(KeyCode.Space))
-                Judge(deltaTime, true);
             break;
         case NoteType.accent:
             if(Input.GetKeyDown(KeyCode.J) && Input.GetKeyDown(KeyCode.F))
