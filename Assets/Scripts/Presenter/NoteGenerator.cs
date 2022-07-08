@@ -54,6 +54,7 @@ public class NoteGenerator : MonoBehaviour {
             if(beforeIsTie){
                 GameObject tieSprite = Instantiate(noteSpritePrefab);
                 tieSprite.transform.position = noteSprite.transform.position - Vector3.right * (float)(noteData.timing - beforeTiming) / 2 * settings.notesSpeed - Vector3.up;
+                tieSprite.transform.localScale = new Vector3(tieSprite.transform.localScale.x * (float)(noteData.timing - beforeTiming) * settings.notesSpeed * 0.35f,tieSprite.transform.localScale.y,tieSprite.transform.localScale.z);
                 tieSprite.transform.parent = note.transform;
                 NoteSpritePresenter tieSpritePresenter = tieSprite.GetComponent<NoteSpritePresenter>();
                 tieSpritePresenter.Init("tie");
