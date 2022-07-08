@@ -39,3 +39,5 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 8ab2a8011027ab84f983b652ef685f19, type: 3}
   - code: 8.
     sprite: {fileID: 21300000, guid: 732732174db9f114787c9fc218f51a4f, type: 3}
+  - code: tie
+    sprite: {fileID: 21300000, guid: 907842707c58499428b7ecf2e8812f95, type: 3}
