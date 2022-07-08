@@ -12,12 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6543a4ff1fd14540aa1e3ac55042d10, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-<<<<<<< HEAD
   notesSpeed: 12
-=======
-  notesSpeed: 10
->>>>>>> 762f84b86607a75e39418b5b1755d3040de13e32
-=======
-  notesSpeed: 12
->>>>>>> Stashed changes
