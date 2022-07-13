@@ -47,11 +47,13 @@ public class NoteGenerator : MonoBehaviour {
                 noteSprite.transform.position -= Vector3.up * (rotateOffset);
             }
             NoteSpritePresenter noteSpritePresenter = noteSprite.GetComponent<NoteSpritePresenter>();
+
             if(isRest){
                 noteSpritePresenter.Init(noteData.length + "rest");
             }else {
                 noteSpritePresenter.Init(noteData.length);
             }
+
             if(isAccent){
                 GameObject accentSprite = Instantiate(noteSpritePrefab);
                 accentSprite.transform.position = noteSprite.transform.position - Vector3.up * 1.2f;
@@ -60,6 +62,7 @@ public class NoteGenerator : MonoBehaviour {
                 NoteSpritePresenter accentSpritePresenter = accentSprite.GetComponent<NoteSpritePresenter>();
                 accentSpritePresenter.Init("accent");
             }
+
             if(beforeIsTie){
                 GameObject tieSprite = Instantiate(noteSpritePrefab);
                 tieSprite.transform.position = noteSprite.transform.position - Vector3.right * (float)(noteData.timing - beforeTiming) / 2 * settings.notesSpeed - Vector3.up;

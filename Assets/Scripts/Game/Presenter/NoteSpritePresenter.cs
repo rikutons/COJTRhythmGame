@@ -15,6 +15,9 @@ public class NoteSpritePresenter : MonoBehaviour
             if(code == noteImage.code)
             {
                 spriteRenderer.sprite = noteImage.sprite;
+                if(code.EndsWith("rest")){
+                    spriteRenderer.color += new Color(0, 0, 0, -0.7f);
+                }
                 break;
             }
         }
