@@ -1,5 +1,6 @@
 {
   "title":"template",
+  "rank": "A",
   "difficulty": 10,
   "path": "test.wav",
   "bpm": 120,

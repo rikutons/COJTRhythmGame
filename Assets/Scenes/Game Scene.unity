@@ -17295,7 +17295,7 @@ MonoBehaviour:
   judgeTiming: {fileID: 11400000, guid: 51b9968f2d6e85b45a172ede78c1f2e8, type: 2}
   userScore: {fileID: 1456993731}
   debugSE: {fileID: 1425978013}
-  isDebugMode: 1
+  isDebugMode: 0
 --- !u!82 &1425978013
 AudioSource:
   m_ObjectHideFlags: 0

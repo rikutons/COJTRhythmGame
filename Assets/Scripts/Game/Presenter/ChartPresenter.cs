@@ -30,6 +30,10 @@ public class ChartPresenter : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI title;
 
+    public void SetJson(string json)
+    {
+        jsonFileName = json;
+    }
     async void Start()
     {
         chart = JsonReader.Read(jsonFileName);
