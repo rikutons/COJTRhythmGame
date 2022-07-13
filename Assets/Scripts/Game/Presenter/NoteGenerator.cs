@@ -34,6 +34,7 @@ public class NoteGenerator : MonoBehaviour {
         GameObject note = Instantiate(notePrefab);
         bool isRest = Array.Exists(noteData.pitches, x => x == '-');
         bool isTie = Array.Exists(noteData.options, x => x == "tie");
+        bool isAccent = Array.Exists(noteData.options, x => x == "accent");
         
         foreach (var tone in noteData.tone)
         {
@@ -50,6 +51,14 @@ public class NoteGenerator : MonoBehaviour {
                 noteSpritePresenter.Init(noteData.length + "rest");
             }else {
                 noteSpritePresenter.Init(noteData.length);
+            }
+            if(isAccent){
+                GameObject accentSprite = Instantiate(noteSpritePrefab);
+                accentSprite.transform.position = noteSprite.transform.position - Vector3.up * 1.2f;
+                accentSprite.transform.localScale *= 0.8f; 
+                accentSprite.transform.parent = note.transform;
+                NoteSpritePresenter accentSpritePresenter = accentSprite.GetComponent<NoteSpritePresenter>();
+                accentSpritePresenter.Init("accent");
             }
             if(beforeIsTie){
                 GameObject tieSprite = Instantiate(noteSpritePrefab);
