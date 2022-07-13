@@ -36,11 +36,22 @@ public class NoteGenerator : MonoBehaviour {
         bool isTie = Array.Exists(noteData.options, x => x == "tie");
         bool isAccent = Array.Exists(noteData.options, x => x == "accent");
         bool isStaccato = Array.Exists(noteData.options, x => x == "staccato");
-        
+
+        Vector3 noteTop = new Vector3(0,-100,0);
+        Vector3 noteBottom = new Vector3(0,100,0);
+
         foreach (var tone in noteData.tone)
         {
             GameObject noteSprite = Instantiate(noteSpritePrefab);
             noteSprite.transform.position = judgeLineTransform.position + Vector3.right * noteSpawnX + Vector3.up * (C4Pos + tone * toneHeight);
+
+            if(noteSprite.transform.position.y > noteTop.y){
+                noteTop = noteSprite.transform.position;
+            }
+            if(noteSprite.transform.position.y < noteBottom.y){
+                noteBottom = noteSprite.transform.position;
+            }
+
             noteSprite.transform.parent = note.transform;
             if(!isRest && tone >= 6)
             {
@@ -55,26 +66,6 @@ public class NoteGenerator : MonoBehaviour {
                 noteSpritePresenter.Init(noteData.length);
             }
 
-            if(isStaccato){
-                GameObject staccatoSprite = Instantiate(noteSpritePrefab);
-                staccatoSprite.transform.position = noteSprite.transform.position - Vector3.up * 1.1f;
-                staccatoSprite.transform.parent = note.transform;
-                NoteSpritePresenter staccatoSpritePresenter = staccatoSprite.GetComponent<NoteSpritePresenter>();
-                staccatoSpritePresenter.Init("staccato");
-            }
-            if(isAccent){
-                GameObject accentSprite = Instantiate(noteSpritePrefab);
-                if(isStaccato){
-                    accentSprite.transform.position = noteSprite.transform.position - Vector3.up * 1.3f;
-                }else{
-                    accentSprite.transform.position = noteSprite.transform.position - Vector3.up * 1.2f;
-                }
-                accentSprite.transform.localScale *= 0.8f; 
-                accentSprite.transform.parent = note.transform;
-                NoteSpritePresenter accentSpritePresenter = accentSprite.GetComponent<NoteSpritePresenter>();
-                accentSpritePresenter.Init("accent");
-            }
-
             if(beforeIsTie){
                 GameObject tieSprite = Instantiate(noteSpritePrefab);
                 tieSprite.transform.position = noteSprite.transform.position - Vector3.right * (float)(noteData.timing - beforeTiming) / 2 * settings.notesSpeed - Vector3.up;
@@ -83,6 +74,26 @@ public class NoteGenerator : MonoBehaviour {
                 NoteSpritePresenter tieSpritePresenter = tieSprite.GetComponent<NoteSpritePresenter>();
                 tieSpritePresenter.Init("tie");
             }
+        }
+
+        if(isStaccato){
+            GameObject staccatoSprite = Instantiate(noteSpritePrefab);
+            staccatoSprite.transform.position = noteBottom - Vector3.up * 1.1f;
+            staccatoSprite.transform.parent = note.transform;
+            NoteSpritePresenter staccatoSpritePresenter = staccatoSprite.GetComponent<NoteSpritePresenter>();
+            staccatoSpritePresenter.Init("staccato");
+        }
+        if(isAccent){
+            GameObject accentSprite = Instantiate(noteSpritePrefab);
+            if(isStaccato) {
+                accentSprite.transform.position = noteBottom - Vector3.up * 1.3f;
+            } else {
+                accentSprite.transform.position = noteBottom - Vector3.up * 1.2f;
+            }
+            accentSprite.transform.localScale *= 0.8f; 
+            accentSprite.transform.parent = note.transform;
+            NoteSpritePresenter accentSpritePresenter = accentSprite.GetComponent<NoteSpritePresenter>();
+            accentSpritePresenter.Init("accent");
         }
 
         beforeIsTie = isTie;
