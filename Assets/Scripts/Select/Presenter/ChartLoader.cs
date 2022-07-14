@@ -10,11 +10,13 @@ public class ChartLoader : MonoBehaviour
     void Start()
     {
         selectMenuData.InfoList = Resources.LoadAll<TextAsset>("Charts")
-            .Select(a => a.text)
-            .Select(data => JsonUtility.FromJson<SelectMenuData.ChartInfo>(data)).
+            .Select(a => new string[]{a.name, a.text})
+            .Select(data => {
+                var info = JsonUtility.FromJson<SelectMenuData.ChartInfo>(data[1]);
+                info.jsonFileName = data[0];
+                return info;
+            }).
             ToArray();
-        selectMenuData.Paths = Resources.LoadAll("Charts")
-            .Select(a => a.name).ToArray();
-        listRenderer.Render();
+        listRenderer.OnLoad();
     }
 }

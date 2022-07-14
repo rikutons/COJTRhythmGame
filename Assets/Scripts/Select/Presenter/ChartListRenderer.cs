@@ -10,20 +10,29 @@ public class ChartListRenderer : MonoBehaviour
     [SerializeField]
     GameObject buttonPrefab;
     [SerializeField]
-    Transform buttonParent;
-
-    public void Render()
+    Transform buttonParentTransform;
+    
+    public void OnLoad()
     {
-        int i = 0;
-        foreach (var info in selectMenuData.InfoList)
+        selectMenuData.onSelectedRankChanged.Subscribe(_ => Render());
+        Render();
+    }
+
+    private void Render()
+    {
+        while (buttonParentTransform.childCount > 0) {
+            DestroyImmediate(buttonParentTransform.GetChild(0).gameObject);
+        }
+        var selected = selectMenuData.InfoList.Where(info => info.rank == selectMenuData.SelectedRank);
+        foreach (var info in selected)
         {
-            var button = Instantiate(buttonPrefab);
-            button.transform.SetParent(buttonParent);
+            var button = Instantiate(buttonPrefab, buttonParentTransform, false);
             button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = info.title;
-            button.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = info.rank;
-            button.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = info.difficulty.ToString();
-            button.GetComponent<ButtonPresenter>().Path = selectMenuData.Paths[i];
-            i++;
+            button.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = info.difficulty.ToString();
+
+            var chartButtonPresenter = button.GetComponent<ChartButtonPresenter>();
+            chartButtonPresenter.Path = info.jsonFileName;
+            chartButtonPresenter.selectMenuData = selectMenuData;
         }
     }
 }

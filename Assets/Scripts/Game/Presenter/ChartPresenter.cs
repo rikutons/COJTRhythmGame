@@ -12,7 +12,7 @@ public class ChartPresenter : MonoBehaviour
     [SerializeField]
     private NoteGenerator noteGenerator;
     [SerializeField]
-    private MasterData.Settings settings;
+    private Settings settings;
     [SerializeField]
     private MasterData.Constants constants;
     [SerializeField]
@@ -26,6 +26,8 @@ public class ChartPresenter : MonoBehaviour
     private Chart chart;
     private int noteIndex = 0;
     private double startTime = 0;
+    private float barTime = 0;
+    bool start = false;
     
     [SerializeField]
     private TextMeshProUGUI title;
@@ -48,17 +50,9 @@ public class ChartPresenter : MonoBehaviour
     private async void StartPlaying()
     {
         await UniTask.Delay(waitSecond);
-        startTime = Time.time;
-        audioSource.PlayDelayed(noteSpawnX / settings.notesSpeed + constants.timeOffset);
-        this.UpdateAsObservable()
-            .Where(_ => noteIndex < chart.notes.Length)
-            .Where(_ => chart.notes[noteIndex].timing <= (Time.time - startTime))
-            .Subscribe(_ =>
-            {
-                noteGenerator.Generate(chart.notes[noteIndex]);
-                noteIndex++;
-            }
-        );
+        audioSource.PlayDelayed(noteSpawnX / settings.NoteSpeed + constants.timeOffset);
+        start = true;
+        barTime = -4f / 8 / chart.bpm * 60 + chart.barInterval;
         this.UpdateAsObservable()
             .Where(_ => !audioSource.isPlaying)
             .Take(1)
@@ -68,5 +62,21 @@ public class ChartPresenter : MonoBehaviour
                 resultPresenter.Show();
             }
         );
+        startTime = Time.realtimeSinceStartup;
+    }
+
+    void FixedUpdate()
+    {
+        if(!start) return;
+        double time = Time.realtimeSinceStartup - startTime;
+        if(barTime <= time) 
+        {
+            noteGenerator.GenerateBar();
+            barTime += chart.barInterval;
+        }
+        if(noteIndex >= chart.notes.Length) return;
+        if(chart.notes[noteIndex].timing > time) return;
+        noteGenerator.Generate(chart.notes[noteIndex]);
+        noteIndex++;
     }
 }

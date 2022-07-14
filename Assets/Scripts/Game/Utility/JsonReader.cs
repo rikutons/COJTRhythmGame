@@ -20,6 +20,7 @@ public class JsonReader : MonoBehaviour
         chart.path = jsonChart.path;
         chart.bpm = jsonChart.bpm;
         chart.title = jsonChart.title;
+        chart.barInterval = 4f / chart.bpm * 60;
         string[] values = jsonChart.beat.Split('/');
         int upper = int.Parse(values[0]);
         int lower = int.Parse(values[1]);
@@ -50,8 +51,8 @@ public class JsonReader : MonoBehaviour
             }
             else
                 chart.notes[i].options = new string[0];
-            chart.notes[i].timing = timing;
-            double length = Int32.Parse(Regex.Match(n.length, "[0-9]+").Value);
+            int l = Int32.Parse(Regex.Match(n.length, "[0-9]+").Value);
+            double length = l;
             Match length_mod_match = Regex.Match(n.length, "[.#]");
             if(length_mod_match.Success)
             {
@@ -61,7 +62,17 @@ public class JsonReader : MonoBehaviour
                 if(length_mod == '/')
                     length *= 2;
             }
-            timing += 4 / length / chart.bpm * 60;
+            if(l == 1 && chart.notes[i].pitches[0] == '-')
+            {
+                timing += 4 / length / 8 * 3 / chart.bpm * 60;
+                chart.notes[i].timing = timing;
+                timing += 4 / length / 8 * 5 / chart.bpm * 60;
+            }
+            else
+            {
+                chart.notes[i].timing = timing;
+                timing += 4 / length / chart.bpm * 60;
+            }
         }
         return chart;
     }

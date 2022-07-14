@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   perfectSecond: 0.05
   greatSecond: 0.1
-  goodSecond: 0.2
-  missSecond: 0.3
+  goodSecond: 0.15
+  missSecond: 0.2

@@ -19,7 +19,7 @@ public class JudgePresenter : MonoBehaviour
         public GameObject note;
     }
     [SerializeField]
-    private MasterData.Settings settings;
+    private Settings settings;
     [SerializeField]
     private MasterData.JudgeTiming judgeTiming;
     [SerializeField]
@@ -40,10 +40,7 @@ public class JudgePresenter : MonoBehaviour
     public void AddNote(GameObject note, string[] type)
     {
         if(Array.Exists(type, x => x == "rest"))
-        {
-            Destroy(note, distanceOffset + 3f);
             return;
-        }
         NoteObject noteObject;
         noteObject.note = note;
 
@@ -60,16 +57,18 @@ public class JudgePresenter : MonoBehaviour
             noteObject.type = NoteType.normal;
         beforeIsTie = isTie;
 
-        noteObject.startTime = Time.time;
+        noteObject.startTime = Time.realtimeSinceStartup;
         notes.Enqueue(noteObject);
     }
 
     private void Update() 
     {
+        if(Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Space))
+            debugSE.Play();
         if(notes.Count == 0)
             return;
         NoteObject nowNote = notes.Peek();
-        float deltaTime = nowNote.startTime + distanceOffset - Time.time;
+        float deltaTime = nowNote.startTime + distanceOffset - Time.realtimeSinceStartup;;
         switch (nowNote.type)
         {
         case NoteType.normal:
@@ -98,7 +97,7 @@ public class JudgePresenter : MonoBehaviour
         if(deltaTime < -judgeTiming.missSecond)
         {
             userScore.MissCount++;
-            Destroy(notes.Dequeue().note, 3f);
+            notes.Dequeue();
         }
     }
 

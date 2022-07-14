@@ -5,9 +5,11 @@ public class NoteGenerator : MonoBehaviour {
     [SerializeField]
     GameObject notePrefab;
     [SerializeField]
+    GameObject barPrefab;
+    [SerializeField]
     GameObject noteSpritePrefab;
     [SerializeField]
-    private MasterData.Settings settings;
+    private Settings settings;
     [SerializeField]
     private Transform judgeLineTransform;
     [SerializeField]
@@ -26,7 +28,17 @@ public class NoteGenerator : MonoBehaviour {
     public void setNoteSpawnX(float noteSpawnX)
     {
         this.noteSpawnX = noteSpawnX;
-        judgePresenter.setDistanceOffset(noteSpawnX / settings.notesSpeed);
+        judgePresenter.setDistanceOffset(noteSpawnX / settings.NoteSpeed);
+    }
+    
+    public void GenerateBar()
+    {
+        GameObject bar = Instantiate(barPrefab);
+        var pos = judgeLineTransform.position;
+        pos.x += noteSpawnX;
+        pos.y = 0f;
+        bar.transform.position = pos;
+        bar.GetComponent<NotePresenter>().NoteSpeed = settings.NoteSpeed;
     }
 
     public void Generate(Chart.Note noteData)
@@ -68,8 +80,8 @@ public class NoteGenerator : MonoBehaviour {
 
             if(beforeIsTie){
                 GameObject tieSprite = Instantiate(noteSpritePrefab);
-                tieSprite.transform.position = noteSprite.transform.position - Vector3.right * (float)(noteData.timing - beforeTiming) / 2 * settings.notesSpeed - Vector3.up;
-                tieSprite.transform.localScale = new Vector3(tieSprite.transform.localScale.x * (float)(noteData.timing - beforeTiming) * settings.notesSpeed * 0.35f,tieSprite.transform.localScale.y,tieSprite.transform.localScale.z);
+                tieSprite.transform.position = noteSprite.transform.position - Vector3.right * (float)(noteData.timing - beforeTiming) / 2 * settings.NoteSpeed - Vector3.up;
+                tieSprite.transform.localScale = new Vector3(tieSprite.transform.localScale.x * (float)(noteData.timing - beforeTiming) * settings.NoteSpeed * 0.35f,tieSprite.transform.localScale.y,tieSprite.transform.localScale.z);
                 tieSprite.transform.parent = note.transform;
                 NoteSpritePresenter tieSpritePresenter = tieSprite.GetComponent<NoteSpritePresenter>();
                 tieSpritePresenter.Init("tie");
@@ -96,6 +108,7 @@ public class NoteGenerator : MonoBehaviour {
             accentSpritePresenter.Init("accent");
         }
 
+        note.GetComponent<NotePresenter>().NoteSpeed = settings.NoteSpeed;
         beforeIsTie = isTie;
         beforeTiming = noteData.timing;
         judgePresenter.AddNote(note, isRest ? new string[]{"rest"} : noteData.options);

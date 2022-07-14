@@ -20,4 +20,5 @@ public class Chart
     public int bpm;
     public string beat;
     public Note[] notes;
+    public float barInterval;
 }
