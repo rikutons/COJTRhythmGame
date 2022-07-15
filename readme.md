@@ -44,6 +44,8 @@ COJT音ゲーグループメンバー
 
 空の楽譜、ATAKA音楽教室、http://atakamusicstudio.com/score/
 
+きらきら星：自主制作(MIDI打ち込み)
+
 # Development Resources
 プラグイン
 - UniRx(MIT Lisense)
