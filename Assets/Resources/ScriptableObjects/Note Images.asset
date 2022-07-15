@@ -45,3 +45,9 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: c7b6346dc802eac40a4d5f329fbf9bd4, type: 3}
   - code: staccato
     sprite: {fileID: 21300000, guid: 8553cf6e56c4c7e468c2dd459faabd2b, type: 3}
+  - code: gyaku-2.
+    sprite: {fileID: 21300000, guid: bd0a672b087db264d91685361dc8c314, type: 3}
+  - code: gyaku-4.
+    sprite: {fileID: 21300000, guid: 32e3228a36eb46f48a82adefa0496042, type: 3}
+  - code: gyaku-8.
+    sprite: {fileID: 21300000, guid: 9a15d52ebf6decb4e934b84d2e27399d, type: 3}
