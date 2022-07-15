@@ -89,6 +89,11 @@ public class NoteGenerator : MonoBehaviour {
                 tieSprite.transform.localScale = new Vector3(tieSprite.transform.localScale.x * (float)(noteData.timing - beforeTiming) * settings.NoteSpeed * 0.35f,tieSprite.transform.localScale.y,tieSprite.transform.localScale.z);
                 tieSprite.transform.parent = note.transform;
                 NoteSpritePresenter tieSpritePresenter = tieSprite.GetComponent<NoteSpritePresenter>();
+                if(!isRest && tone >= 6)
+                {
+                    tieSprite.transform.Rotate(Vector3.back * 180);
+                    tieSprite.transform.position += Vector3.up * 2.1f;
+                }
                 tieSpritePresenter.Init("tie");
             }
         }
