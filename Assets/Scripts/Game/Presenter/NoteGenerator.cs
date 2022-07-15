@@ -69,6 +69,9 @@ public class NoteGenerator : MonoBehaviour {
             {
                 noteSprite.transform.Rotate(Vector3.back * 180);
                 noteSprite.transform.position -= Vector3.up * (rotateOffset);
+                if(noteData.length.EndsWith('.')){
+                    noteData.length = "gyaku-" + noteData.length;
+                }
             }
             NoteSpritePresenter noteSpritePresenter = noteSprite.GetComponent<NoteSpritePresenter>();
 
