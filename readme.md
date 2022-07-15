@@ -44,6 +44,8 @@ COJT音ゲーグループメンバー
 
 空の楽譜、ATAKA音楽教室、http://atakamusicstudio.com/score/
 
+M+ P Type-1 Font https://mplus-fonts.osdn.jp
+
 # Development Resources
 プラグイン
 - UniRx(MIT Lisense)
