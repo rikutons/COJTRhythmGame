@@ -46,6 +46,8 @@ COJT音ゲーグループメンバー
 
 M+ P Type-1 Font https://mplus-fonts.osdn.jp
 
+きらきら星：自主制作(MIDI打ち込み)
+
 # Development Resources
 プラグイン
 - UniRx(MIT Lisense)
