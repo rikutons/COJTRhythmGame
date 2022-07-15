@@ -41,3 +41,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 732732174db9f114787c9fc218f51a4f, type: 3}
   - code: tie
     sprite: {fileID: 21300000, guid: 907842707c58499428b7ecf2e8812f95, type: 3}
+  - code: accent
+    sprite: {fileID: 21300000, guid: c7b6346dc802eac40a4d5f329fbf9bd4, type: 3}
+  - code: staccato
+    sprite: {fileID: 21300000, guid: 8553cf6e56c4c7e468c2dd459faabd2b, type: 3}
