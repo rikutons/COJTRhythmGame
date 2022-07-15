@@ -26,8 +26,8 @@
 
         {"length": "4", "tone" : ["4"],"Bar":11},
         {"length": "8.", "tone" : ["6b"]},
-        {"length": "16", "tone" : ["8"]},
         {"length": "16", "tone" : ["8"],"option":["tie"]},
+        {"length": "16", "tone" : ["8"]},
         {"length": "16", "tone" : ["9b"]},
         {"length": "8", "tone" : ["9b"]},
         {"length": "8", "tone" : ["8"]},
@@ -109,8 +109,8 @@
 
         {"length": "4", "tone" : ["4"],"Bar":19},
         {"length": "8.", "tone" : ["6b"]},
-        {"length": "16", "tone" : ["8"]},
         {"length": "16", "tone" : ["8"],"option":["tie"]},
+        {"length": "16", "tone" : ["8"]},
         {"length": "16", "tone" : ["9b"]},
         {"length": "8", "tone" : ["9b"]},
         {"length": "8", "tone" : ["8"]},
