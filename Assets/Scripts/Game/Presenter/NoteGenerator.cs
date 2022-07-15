@@ -48,6 +48,7 @@ public class NoteGenerator : MonoBehaviour {
         bool isTie = Array.Exists(noteData.options, x => x == "tie");
         bool isAccent = Array.Exists(noteData.options, x => x == "accent");
         bool isStaccato = Array.Exists(noteData.options, x => x == "staccato");
+        bool isUnder = false;
 
         Vector3 noteTop = new Vector3(0,-100,0);
         Vector3 noteBottom = new Vector3(0,100,0);
@@ -72,6 +73,7 @@ public class NoteGenerator : MonoBehaviour {
                 if(noteData.length.EndsWith('.')){
                     noteData.length = "gyaku-" + noteData.length;
                 }
+                isUnder = true;
             }
             NoteSpritePresenter noteSpritePresenter = noteSprite.GetComponent<NoteSpritePresenter>();
 
@@ -93,17 +95,29 @@ public class NoteGenerator : MonoBehaviour {
 
         if(isStaccato){
             GameObject staccatoSprite = Instantiate(noteSpritePrefab);
-            staccatoSprite.transform.position = noteBottom - Vector3.up * 1.1f;
+            if(!isRest && isUnder){
+                staccatoSprite.transform.position = noteBottom - Vector3.up * 0.3f;
+            }else{
+                staccatoSprite.transform.position = noteBottom - Vector3.up * 1.1f;
+            }
             staccatoSprite.transform.parent = note.transform;
             NoteSpritePresenter staccatoSpritePresenter = staccatoSprite.GetComponent<NoteSpritePresenter>();
             staccatoSpritePresenter.Init("staccato");
         }
         if(isAccent){
             GameObject accentSprite = Instantiate(noteSpritePrefab);
-            if(isStaccato) {
-                accentSprite.transform.position = noteBottom - Vector3.up * 1.3f;
-            } else {
-                accentSprite.transform.position = noteBottom - Vector3.up * 1.2f;
+            if(!isRest && isUnder){
+                if(isStaccato) {
+                    accentSprite.transform.position = noteBottom - Vector3.up * 0.1f;
+                } else {
+                    accentSprite.transform.position = noteBottom - Vector3.up * 0.2f;
+                }
+            }else{
+                if(isStaccato) {
+                    accentSprite.transform.position = noteBottom - Vector3.up * 1.3f;
+                } else {
+                    accentSprite.transform.position = noteBottom - Vector3.up * 1.2f;
+                }
             }
             accentSprite.transform.localScale *= 0.8f; 
             accentSprite.transform.parent = note.transform;
