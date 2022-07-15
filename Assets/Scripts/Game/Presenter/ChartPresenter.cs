@@ -52,7 +52,7 @@ public class ChartPresenter : MonoBehaviour
         await UniTask.Delay(waitSecond);
         audioSource.PlayDelayed(noteSpawnX / settings.NoteSpeed + constants.timeOffset);
         start = true;
-        barTime = -4f / 8 / chart.bpm * 60 + chart.barInterval;
+        barTime = -4f / 8 / chart.bpm * 60 - 4f / (32 / 1.5f) / chart.bpm * 60 + chart.barInterval;
         this.UpdateAsObservable()
             .Where(_ => !audioSource.isPlaying)
             .Take(1)
