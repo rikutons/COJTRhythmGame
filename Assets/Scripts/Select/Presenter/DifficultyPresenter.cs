@@ -12,6 +12,7 @@ public class DifficultyPresenter : MonoBehaviour
     readonly string[] difficulties = { "A", "B", "C", "F" };
     void Start()
     {
+        index = 2;
         selectMenuData.onSelectedRankChanged.Subscribe(rank => rankText.text = rank);
         ApplyIndex();
     }
