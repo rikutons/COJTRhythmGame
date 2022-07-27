@@ -8,7 +8,7 @@ public class DifficultyPresenter : MonoBehaviour
     SelectMenuData selectMenuData;
     [SerializeField]
     TextMeshProUGUI rankText;
-    int index = 0;
+    int index = 2;
     readonly string[] difficulties = { "A", "B", "C", "F" };
     void Start()
     {

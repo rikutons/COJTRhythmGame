@@ -1,6 +1,10 @@
 2022 COJT 楽譜音ゲー
 
 楽譜を素早く読めるようになることを目的とした音ゲーを開発します
+
+# プレイ
+
+https://unityroom.com/games/etude
  
 # DEMO
 

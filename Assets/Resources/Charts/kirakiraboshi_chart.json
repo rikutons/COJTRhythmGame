@@ -1,4 +1,4 @@
-{
+  {
     "title":"きらきら星",
     "rank": "C",
     "difficulty": 4,
@@ -6,10 +6,12 @@
     "bpm": 100,
     "beat": "4/4",
     "notes": [
-        {"length":"4.", "tone":[6], "option" : ["staccato","accent"]},
-        {"length":"4.", "tone":[6], "option" : ["staccato","accent"]},
-        {"length":"4.", "tone":[7], "option" : ["staccato","accent"]},
-        {"length":"4.", "tone":[7], "option" : ["staccato","accent"]},
+        {"length":"4", "tone":[0]},
+        {"length":"4", "tone":[0]},
+        {"length":"4", "tone":[4]},
+        {"length":"4", "tone":[4]},
+        {"length":"4", "tone":[5]},
+        {"length":"4", "tone":[5]},
         {"length":"2", "tone":[4]},
         {"length":"4", "tone":[3]},
         {"length":"4", "tone":[3]},
